@@ -7,46 +7,51 @@ const SECTIONS = [
     items: [
       {
         title: "What is GitCheck?",
-        content: `GitCheck is a developer credibility auditing tool. Enter any public GitHub username and GitCheck fetches their public profile data via the GitHub API, filters noise (forked repos, tutorial clones), and generates a scored audit report in under 2 seconds.
+        content: `GitCheck is a professional developer credibility auditing tool. Enter any public GitHub username and GitCheck fetches live profile metadata via the GitHub API, filters noise (forked repos, tutorial clones), and generates an authoritative audit report in under 2 seconds.
 
-The audit covers three core modules: Noise Cancellation (original vs forked repos), Security Snapshot (license coverage, issue tracking), and Stack Visualization (language aggregation across all repos).`,
+The engine specifically solves the "Developer Credibility Gap" by validating original contributions against professional standards.`,
       },
       {
         title: "Running your first audit",
-        content: `Navigate to the homepage and enter a GitHub username in the search bar. Press Enter or click "Audit →".
-
-GitCheck will redirect you to /audit/[username] and fetch live data from the GitHub API. The audit page displays the developer's profile, credibility score (0–100), security snapshot, and a feed of original repositories.`,
-        code: `# Example audit URLs
-https://gitcheck.dev/audit/torvalds
-https://gitcheck.dev/audit/gaearon
-https://gitcheck.dev/audit/sindresorhus`,
+        content: `Maps to the terminal-style homepage and enter a GitHub handle. GitCheck will redirect to a dynamic audit route to fetch and analyze real-time registry data.`,
+        code: `# Automated audit sequence
+GET /audit/atharv-shawrikar
+FETCH_SIGNAL: ORIGINAL_REPOS_ONLY
+CALCULATE_HEALTH: DOCUMENTATION + HYGIENE`,
       },
       {
-        title: "Understanding the score",
-        content: `The credibility score (0–100) is calculated from several weighted signals:`,
+        title: "The Audit Algorithm",
+        content: `The credibility score (0–100) is a weighted calculation of repository hygiene and professional documentation standards:`,
         table: [
-          { signal: "Original repo count", weight: "30%", notes: "Excludes forks" },
-          { signal: "Stars received", weight: "25%", notes: "Normalized logarithmically" },
-          { signal: "Account age", weight: "15%", notes: "Longer = higher baseline" },
-          { signal: "License coverage", weight: "15%", notes: "% of repos with a license" },
-          { signal: "Issue tracking", weight: "10%", notes: "% of repos with issues enabled" },
-          { signal: "Follower ratio", weight: "5%", notes: "Followers vs following" },
+          { signal: "Documentation", weight: "30%", notes: "README & Description coverage" },
+          { signal: "Legal Compliance", weight: "30%", notes: "Valid OSS Licensing" },
+          { signal: "Cyber Hygiene", weight: "40%", notes: "Reporting channels & Integrity" },
         ],
       },
     ],
   },
   {
-    id: "score-tiers",
-    label: "Score Tiers",
+    id: "security-audit",
+    label: "Security Audit",
     items: [
       {
-        title: "Tier definitions",
-        content: `GitCheck assigns one of four tiers based on the final score:`,
+        title: "Vulnerability Channel",
+        content: `Verifies if the developer has established a public interface for reporting security vulnerabilities.
+
+Logic: Checks if 'Issues' are enabled across all original repositories. This ensures a proactive stance where the developer allows public feedback and vulnerability disclosure.`,
+      },
+      {
+        title: "Branch Integrity",
+        content: `Identifies 'Legacy Risk' by auditing the maintenance status of the codebase.
+
+Logic: Scans for the 'archived' flag. Integrity is flagged as 'High' when work is currently active, whereas 'Legacy Risk' indicates code that is no longer receiving security patches or dependency updates.`,
+      },
+      {
+        title: "Compliance Tier",
+        content: `A high-level categorization of the developer's professional standards based on the aggregate Health Score:`,
         table: [
-          { signal: "Elite", weight: "91–100", notes: "Top 5% of audited developers" },
-          { signal: "Expert", weight: "76–90", notes: "Consistent quality across repos" },
-          { signal: "Proficient", weight: "56–75", notes: "Solid signal, room to grow" },
-          { signal: "Beginner", weight: "0–55", notes: "Early-stage or sparse profile" },
+          { signal: "Secure Tier", weight: "81–100", notes: "Proactive documentation & hygiene" },
+          { signal: "Basic Tier", weight: "0–80", notes: "Limited licensing or metadata" },
         ],
       },
     ],
@@ -56,20 +61,16 @@ https://gitcheck.dev/audit/sindresorhus`,
     label: "FAQ",
     items: [
       {
-        title: "Is GitCheck affiliated with GitHub?",
-        content: "No. GitCheck uses GitHub's public REST API (v3) to read publicly available profile and repository data. We are not affiliated with GitHub or Microsoft.",
-      },
-      {
-        title: "Can I audit private repositories?",
-        content: "No. GitCheck only reads public data via the unauthenticated GitHub API. Private repositories, private contributions, and private activity are not visible to GitCheck.",
-      },
-      {
         title: "Why are forked repositories excluded?",
-        content: "Forks represent someone else's work. Including them would inflate repo counts and distort signal quality. GitCheck specifically filters for non-forked repositories to surface original contributions.",
+        content: "Forks represent someone else's work. Including them distorts signal quality. GitCheck specifically filters for non-forked repositories to surface only your original contributions.",
       },
       {
         title: "How often is data refreshed?",
-        content: "Every audit is a live request to the GitHub API — data is always fresh at the moment of the audit. GitCheck does not cache or store profile data.",
+        content: "Every audit is a live request to the GitHub API. GitCheck does not cache profile data, ensuring your report reflects the current state of the GitHub registry.",
+      },
+      {
+        title: "Can I audit private repositories?",
+        content: "No. GitCheck only reads public metadata via the authenticated GitHub REST API. Private repositories and activity are never accessed or visible.",
       },
     ],
   },
@@ -184,7 +185,7 @@ export default function DocsPage() {
                 GitCheck<br /><span style={{ color: "var(--muted)", fontWeight: 600, fontSize: ".6em" }}>Reference & Guide</span>
               </h1>
               <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: ".82rem", color: "var(--muted)", lineHeight: 1.75, maxWidth: 520 }}>
-                Everything you need to understand how GitCheck works, how scores are calculated, and how to get the most from your audit.
+                Everything you need to understand how the GitCheck auditing engine works, how scores are calculated, and how to verify professional signal.
               </p>
             </div>
 
@@ -207,7 +208,7 @@ export default function DocsPage() {
                     {item.table && (
                       <div style={{ background: "#010409", border: "1px solid var(--border)", borderRadius: 10, overflow: "hidden", marginTop: "1rem" }}>
                         <table>
-                          <thead><tr><th>Signal / Tier</th><th>Weight / Range</th><th>Notes</th></tr></thead>
+                          <thead><tr><th>Signal / Module</th><th>Weight / Logic</th><th>Notes</th></tr></thead>
                           <tbody>
                             {item.table.map((row, j) => (
                               <tr key={j}><td>{row.signal}</td><td style={{ color: "var(--text)" }}>{row.weight}</td><td style={{ color: "var(--muted)" }}>{row.notes}</td></tr>
