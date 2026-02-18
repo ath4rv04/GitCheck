@@ -154,9 +154,9 @@ export default async function AuditPage({
           <section className="gc-fade-1 flex flex-col md:flex-row items-center md:items-start gap-8 py-12">
 
             {/* Avatar */}
-            <div className="relative flex-shrink-0">
+            <div className="relative shrink-0">
               <div
-                className="rounded-full p-[3px]"
+                className="rounded-full p-0.75"
                 style={{ background: `linear-gradient(135deg, ${accentColor}, #3b82f6)` }}
               >
                 <img
@@ -233,7 +233,7 @@ export default async function AuditPage({
 
             {/* Score ring */}
             <div
-              className="flex flex-col items-center gap-3 flex-shrink-0 rounded-2xl p-6"
+              className="flex flex-col items-center gap-3 shrink-0 rounded-2xl p-6"
               style={{ background: "var(--card)", border: "1px solid var(--border)", minWidth: 160 }}
             >
               <div className="relative" style={{ width: 100, height: 100 }}>

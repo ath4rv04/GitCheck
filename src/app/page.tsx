@@ -10,7 +10,7 @@ function ActivityGrid() {
   });
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden" style={{ opacity: 0.13 }}>
-      <div className="grid gap-[3px]" style={{ gridTemplateColumns: "repeat(52, 1fr)", gridTemplateRows: "repeat(7, 1fr)", width: "min(95vw, 1100px)" }}>
+      <div className="grid gap-0.75" style={{ gridTemplateColumns: "repeat(52, 1fr)", gridTemplateRows: "repeat(7, 1fr)", width: "min(95vw, 1100px)" }}>
         {cells.map((level, i) => (
           <div key={i} className="rounded-sm" style={{
             aspectRatio: "1",
@@ -306,7 +306,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-6">
           {[
             { name: "Docs", path: "/docs" },
-            { name: "API", path: "/api" },
+            // { name: "API", path: "/api" },
             { name: "About", path: "/about" },
           ].map((item) => (
             <Link 
@@ -469,7 +469,7 @@ export default function Home() {
                 {FEATURES.slice(1).map((f, i) => (
                   <div key={i} className="gc-feature rounded-2xl relative overflow-hidden flex gap-5 items-start" style={{ background: "var(--card)", border: "1px solid var(--border)", padding: "1.6rem" }}>
                     <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(0,212,170,.18), transparent)" }} />
-                    <div className="feature-icon-box flex items-center justify-center rounded-xl flex-shrink-0" style={{ width: 44, height: 44, background: "rgba(0,212,170,.07)", border: "1px solid rgba(0,212,170,.15)", color: "var(--accent)", transition: "background .25s, border-color .25s" }}>
+                    <div className="feature-icon-box flex items-center justify-center rounded-xl shrink-0" style={{ width: 44, height: 44, background: "rgba(0,212,170,.07)", border: "1px solid rgba(0,212,170,.15)", color: "var(--accent)", transition: "background .25s, border-color .25s" }}>
                       {f.icon}
                     </div>
                     <div className="flex-1">
@@ -477,7 +477,7 @@ export default function Home() {
                       <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "1rem", marginBottom: ".5rem", color: "var(--text)" }}>{f.label}</h3>
                       <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: ".75rem", color: "var(--muted)", lineHeight: 1.7 }}>{f.desc}</p>
                     </div>
-                    <div className="feature-num hidden md:block flex-shrink-0" style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "3rem", color: "rgba(255,255,255,.025)", lineHeight: 1, transition: "color .25s" }}>{f.num}</div>
+                    <div className="feature-num hidden md:block shrink-0" style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "3rem", color: "rgba(255,255,255,.025)", lineHeight: 1, transition: "color .25s" }}>{f.num}</div>
                   </div>
                 ))}
               </div>

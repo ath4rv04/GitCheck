@@ -2,12 +2,11 @@ import Link from "next/link";
 
 const TIMELINE = [
   { date: "Jan 2026", event: "Idea born", desc: "Frustrated by inflated GitHub profiles in job applications, the idea for a signal-over-noise audit tool was sketched out." },
-  { date: "Feb 2026", event: "v0.1 shipped", desc: "First working prototype: a raw GitHub API call and a basic score formula. Ugly, but functional." },
   { date: "Feb 2026", event: "Beta launch", desc: "GitCheck v1.0 goes live. Score algorithm refined, UI rebuilt from scratch with the terminal aesthetic." },
 ];
 
 const STACK = [
-  { name: "Next.js 14", role: "Framework", color: "#e6edf3" },
+  { name: "Next.js 16", role: "Framework", color: "#e6edf3" },
   { name: "TypeScript", role: "Language", color: "#2b7489" },
   { name: "GitHub REST API v3", role: "Data source", color: "#00d4aa" },
   { name: "Tailwind CSS", role: "Styling", color: "#06b6d4" },
